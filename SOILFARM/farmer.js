@@ -19,12 +19,12 @@ import {
 
 // 🔹 Firebase config
 const firebaseConfig = {
-  apiKey: "AIzaSyBdcANZECkd77EzLZ9rgXNgFMWEcCH6jbQ",
-  authDomain: "soil-login-and-signup.firebaseapp.com",
-  projectId: "soil-login-and-signup",
-  storageBucket: "soil-login-and-signup.firebasestorage.app",
-  messagingSenderId: "630896454836",
-  appId: "1:630896454836:web:f2f9fbd1bda7c1df6ebbe1",
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
 // 🔹 Initialize Firebase
@@ -172,3 +172,4 @@ async function loadDistributors() {
     console.error("Error loading distributors:", err);
   }
 }
+
