@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Soil Farming Agent</title>
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script type="module" src="firebaseauth.js"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">🌱 Soil Farming Agent</div>
+        <ul class="nav-link">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="register.html" class="active">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Register Form -->
+    <div class="container" id="signUp">
+      <h1 class="form-tittle">Register</h1>
+      <form action="javascript:void(0)" method="post">
+        <div class="messageDiv" id="signUpMessage" style="display: none"></div>
+
+        <!-- Name -->
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="rName" placeholder="Name" required />
+          <label for="rName">Your Name</label>
+        </div>
+
+        <!-- Email -->
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="rEmail" placeholder="Email" required />
+          <label for="rEmail">Email</label>
+        </div>
+
+        <!-- Role Dropdown -->
+        <div class="input-group">
+          <i class="fas fa-user-tag"></i>
+          <select id="rRole" required>
+            <option value="" disabled selected hidden></option>
+            <option value="farmer">Farmer</option>
+            <option value="distributor">Distributor</option>
+          </select>
+          <label for="rRole">Role</label>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            id="rPassword"
+            placeholder="Password"
+            required
+          />
+          <label for="rPassword">Password</label>
+        </div>
+
+        <!-- Submit -->
+        <button type="button" class="btn" id="submitSignUp">Sign Up</button>
+      </form>
+
+      <p class="or">---------- or ---------</p>
+
+      <!-- Social icons -->
+      <div class="icons">
+        <i class="fab fa-google"></i>
+        <i class="fab fa-facebook"></i>
+      </div>
+
+      <!-- Link to Sign In -->
+      <div class="linkSignIn">
+        <p>Already have an account?</p>
+        <button type="button" id="signInButton">Sign In</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Soil Farming Agent | Agriculture Project</p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("signInButton")
+        .addEventListener("click", function () {
+          window.location.href = "login.html";
+        });
+    </script>
+  </body>
+</html>

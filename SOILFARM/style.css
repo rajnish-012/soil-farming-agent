@@ -1,0 +1,201 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Colors */
+:root {
+  --soil-brown: #5c4033;
+  --earth-green: #3e7c47;
+  --light-green: #a8d5ba;
+  --cream: #f5f0e6;
+  --dark-text: #2b2b2b;
+}
+
+/* Body & Layout */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cream);
+  color: var(--dark-text);
+  line-height: 1.6;
+  scroll-behavior: smooth; /* smooth scroll */
+}
+
+main {
+  flex: 1;
+}
+
+/* Floating Glass Navbar */
+header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(92, 64, 51, 0.85); 
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Navbar Glow */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(45deg, #8d6e63, #a1887f, #6d4c41);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-link {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link li a:hover {
+  color: var(--light-green);
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(60, 40, 20, 0.6), rgba(60, 40, 20, 0.6)),
+    url("https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")
+no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  min-height: 100vh;       
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Soil Grainy Overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("https://www.transparenttextures.com/patterns/soil-dark.png");
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  animation: fadeSlide 1.5s ease-in-out;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Buttons */
+.hero-button {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero-button a {
+  text-decoration: none;
+  background: var(--earth-green);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.hero-button a:hover {
+  background: var(--light-green);
+  color: var(--soil-brown);
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* Floating Glass Footer on Right */
+footer {
+  position: fixed;          /* stays visible on scroll */
+  right: 20px;              /* gap from right edge */
+  bottom: 20px;             /* gap from bottom */
+  width: 280px;             /* fixed width */
+  background: rgba(92, 64, 51, 0.85); 
+  backdrop-filter: blur(12px);
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 999;             /* keep above content */
+}
+
+/* Footer Glow */
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(45deg, #8d6e63, #a1887f, #6d4c41);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

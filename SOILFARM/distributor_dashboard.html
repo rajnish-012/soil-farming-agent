@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distributor Dashboard</title>
+    <link rel="stylesheet" href="distributor.css" />
+  </head>
+  <body>
+    <!-- ================= Navbar ================= -->
+    <header>
+      <div class="navbar">
+        <div class="logo">AgriConnect</div>
+        <ul class="nav-link">
+          <li><a href="#welcome" class="active">Home</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#crops">Crops</a></li>
+          <li><a href="index.html">Logout</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ================= Welcome Section ================= -->
+    <section id="welcome" class="welcome">
+      <h2>Welcome, <span>Distributor</span> <span class="wave">👋</span></h2>
+      <p>Manage your crops efficiently through your dashboard.</p>
+    </section>
+
+    <!-- ================= Distributor Profile ================= -->
+    <section id="profile" class="container">
+      <h2>My Profile</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td id="distName"></td>
+          </tr>
+          <tr>
+            <th>Contact</th>
+            <td id="distContact"></td>
+          </tr>
+          <tr>
+            <th>Location</th>
+            <td id="distLocation"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ================= Assigned Crops ================= -->
+    <section id="crops" class="container">
+      <h2>Assigned Crops</h2>
+
+      <!-- Add Crop Button -->
+      <button id="addCropBtn" style="margin-bottom: 12px">Add New Crop</button>
+
+      <!-- Search/Filter -->
+      <input
+        type="text"
+        id="cropSearch"
+        placeholder="Search crops..."
+        style="margin-bottom: 12px; padding: 6px; width: 100%; max-width: 300px"
+      />
+
+      <!-- Crops Grid -->
+      <div class="card-grid" id="assignedCrops">
+        <!-- Crop cards injected via JS -->
+      </div>
+    </section>
+
+    <!-- ================= Footer ================= -->
+    <footer>&copy; 2025 AgriConnect | All Rights Reserved</footer>
+
+    <!-- ================= JS ================= -->
+    <script type="module" src="distributor.js"></script>
+  </body>
+</html>

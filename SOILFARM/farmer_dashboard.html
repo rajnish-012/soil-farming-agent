@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard – Soil Farming Agent</title>
+    <link rel="stylesheet" href="farmer_dashboard.css" />
+    <script type="module" src="user.js" defer></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">🌱 Soil Farming Agent</div>
+        <ul class="nav-link">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#soils">Soil Info</a></li>
+          <li><a href="#crops">Crops</a></li>
+          <li><a href="#distributors">Distributors</a></li>
+          <li><a href="index.html" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container welcome">
+      <h2>
+        Welcome, <span id="username">Raja</span>
+        <span class="wave">👋</span>
+      </h2>
+      <p>This is your personalized soil and crop dashboard.</p>
+    </div>
+
+    <!-- Soil Information -->
+    <section id="soils" class="container">
+      <h3>🌍 Soil Types</h3>
+      <div class="card-grid" id="soilCards">
+        <!-- Soil cards will be injected here from Firestore -->
+      </div>
+    </section>
+
+    <!-- Crop Recommendations -->
+    <section id="crops" class="container">
+      <h3>🌾 Recommended Crops</h3>
+      <ul id="cropList">
+        <!-- Crops will be listed dynamically -->
+      </ul>
+    </section>
+
+    <!-- Distributor Details -->
+    <section id="distributors" class="container">
+      <h3>🚜 Distributors</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Contact</th>
+            <th>Crops</th>
+          </tr>
+        </thead>
+        <tbody id="distributorTable">
+          <!-- Distributors will be injected dynamically -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">© 2025 Soil Farming Agent | User Dashboard</footer>
+    <script type="module" src="farmer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,370 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Global colors */
+:root {
+  --soil-brown: #5c4033;
+  --earth-green: #3e7c47;
+  --light-green: #a8d5ba;
+  --cream: #f5f0e6;
+  --dark-text: #2b2b2b;
+}
+
+/* Background with soil-inspired image & overlay */
+body {
+  height: 100vh;
+  display: flex;
+  padding-top: 120px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(60, 40, 20, 0.6), rgba(60, 40, 20, 0.6)),
+    url("https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")
+      no-repeat center center/cover;
+  background-attachment: fixed;
+}
+
+/* Floating Glass Navbar */
+header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(92, 64, 51, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Navbar Glow */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(45deg, #8d6e63, #a1887f, #6d4c41);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-link {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link li a:hover,
+.nav-link li a.active {
+  color: var(--light-green);
+}
+
+/* Floating Glass Container */
+.container {
+  background: rgba(245, 240, 230, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  position: relative;
+  animation: fadeSlide 1.2s ease-in-out;
+}
+
+.form-tittle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--soil-brown);
+}
+
+/* Message Box */
+.messageDiv {
+  background: #ffe5e5;
+  border-left: 4px solid #d9534f;
+  color: #b52b27;
+  padding: 8px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Input groups */
+.input-group {
+  position: relative;
+  margin: 25px 0;
+}
+
+.input-group i {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  color: #7b4f31;
+  font-size: 18px;
+}
+
+/* Text inputs & Select */
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 12px 12px 35px;
+  border: 2px solid #c69c6d;
+  border-radius: 8px;
+  outline: none;
+  background: #fef6eb;
+  transition: 0.3s;
+}
+
+/* Input focus */
+.input-group input:focus {
+  border-color: #5a3e2b;
+}
+
+/* Hide placeholder text for floating label effect */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: transparent;
+}
+
+/* Floating labels */
+.input-group label {
+  position: absolute;
+  left: 35px;
+  top: 12px;
+  border-radius: 2rem;
+  pointer-events: none;
+  color: #7b4f31;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 30px;
+  font-size: 12px;
+  color: #5a3e2b;
+  background: #f4f1e6;
+  padding: 0 5px;
+}
+
+/* ===================== Role Dropdown Enhancements ===================== */
+.input-group select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Custom arrow */
+  background-image: url("https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.input-group select:focus {
+  border-color: #5a3e2b;
+  box-shadow: 0 0 6px rgba(92, 64, 51, 0.4);
+}
+
+/* Float label when role chosen or focused */
+.input-group select:focus + label,
+.input-group select:valid + label {
+  top: -10px;
+  left: 30px;
+  font-size: 12px;
+  color: #5a3e2b;
+  background: #f4f1e6;
+  padding: 0 5px;
+}
+
+/* Style dropdown popup options */
+.input-group select option {
+  background: rgba(245, 240, 230, 0.95);
+  color: var(--soil-brown);
+  padding: 12px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+}
+
+.input-group select option:hover,
+.input-group select option:checked,
+.input-group select option:focus {
+  background: var(--light-green);
+  color: var(--dark-text);
+}
+
+/* Recover link */
+.recover {
+  text-align: right;
+  margin-top: -8px;
+  font-size: 0.85rem;
+}
+
+.recover a {
+  text-decoration: none;
+  color: var(--soil-brown);
+  transition: 0.3s;
+}
+
+.recover a:hover {
+  color: var(--earth-green);
+}
+
+/* Submit Button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--earth-green);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--light-green);
+  color: var(--soil-brown);
+  transform: scale(1.05);
+}
+
+/* OR Divider */
+.or {
+  margin: 1.5rem 0;
+  color: var(--soil-brown);
+  font-weight: 600;
+}
+
+/* Social Icons */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.icons i {
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--soil-brown);
+  color: var(--soil-brown);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.icons i:hover {
+  background: var(--soil-brown);
+  color: #fff;
+}
+
+/* Sign Up / Sign In links */
+.linkSignUp,
+.linkSignIn p {
+  color: var(--soil-brown);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+#signUpButton,
+#signInButton {
+  background: none;
+  border: 2px solid var(--earth-green);
+  color: var(--earth-green);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#signUpButton:hover,
+#signInButton:hover {
+  background: var(--earth-green);
+  color: #fff;
+}
+
+/* Animation */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media screen and (max-width: 400px) {
+  .container {
+    width: 90%;
+    padding: 1.8rem;
+  }
+}
+
+/* Floating Glass Footer */
+footer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 280px;
+  background: rgba(92, 64, 51, 0.85);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 999;
+}
+
+/* Footer Glow */
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 2px;
+  background: linear-gradient(45deg, #8d6e63, #a1887f, #6d4c41);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

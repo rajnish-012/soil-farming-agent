@@ -1,0 +1,23 @@
+{
+  "soils": {
+    "soil1": {
+      "type": "Alluvial Soil",
+      "characteristics": "Very fertile, rich in potash and lime.",
+      "suitableCrops": ["Rice", "Wheat", "Sugarcane", "Pulses"]
+    },
+    "soil2": {
+      "type": "Black Soil",
+      "characteristics": "Clayey, moisture-retentive, rich in lime, iron, magnesium.",
+      "suitableCrops": ["Cotton", "Wheat", "Soybean", "Millets"]
+    },
+    "soil3": {
+      "type": "Red Soil",
+      "characteristics": "Sandy texture, poor in nitrogen, rich in iron oxide.",
+      "suitableCrops": ["Groundnut", "Millets", "Potato", "Rice"]
+    },
+    "soil4": {
+      "type": "Laterite Soil",
+      "characteristics": "Acidic, poor in organic matter, found in high rainfall regions.",
+      "suitableCrops": ["Tea", "Coffee", "Cashew", "Rubber"]
+    }
+  },

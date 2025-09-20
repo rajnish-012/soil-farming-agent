@@ -1,0 +1,283 @@
+/* about.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --soil-brown: #5c4033;
+  --earth-green: #3e7c47;
+  --light-green: #a8d5ba;
+  --cream: #f5f0e6;
+  --dark-text: #2b2b2b;
+  --card-bg: #fffefc;
+}
+
+/* Body with soil background */
+html, body {
+  height: 100%;
+  background: 
+    linear-gradient(rgba(60, 40, 20, 0.65), rgba(60, 40, 20, 0.65)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center/cover;
+  color: var(--dark-text);
+  line-height: 1.7;
+  scroll-behavior: smooth;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Agriculture illustration overlay (crops silhouette) */
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/soil.png") repeat;
+  opacity: 0.25; /* subtle */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navbar */
+header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(92, 64, 51, 0.9);
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-link {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Underline animation */
+.nav-link li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--light-green);
+  transition: width 0.3s ease;
+}
+
+.nav-link li a:hover,
+.nav-link li a.active {
+  color: var(--light-green);
+}
+
+.nav-link li a:hover::after,
+.nav-link li a.active::after {
+  width: 100%;
+}
+
+/* About Section */
+.about {
+  padding: 8rem 17rem 5rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1; /* ensures container floats above illustration */
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+/* Transparent Glass Container */
+.about-container {
+  max-width: 950px;
+  background: rgba(255, 255, 255, 0.15); /* transparent white */
+  backdrop-filter: blur(12px);           /* frosted glass */
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2.5rem 3rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: fadeSlide 1.2s ease-in-out;
+  color: #fff; /* text white for readability */
+}
+
+/* Headings */
+.about-container h1 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  position: relative;
+  display: inline-block;
+}
+
+.about-container h1::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  left: 0;
+  bottom: -8px;
+  background: linear-gradient(90deg, var(--earth-green), var(--light-green));
+  border-radius: 2px;
+}
+
+.about-container h2 {
+  margin: 2rem 0 1rem;
+  color: var(--light-green);
+  font-size: 1.7rem;
+  position: relative;
+}
+
+.about-container h2::before {
+  content: "▸ ";
+  color: var(--earth-green);
+}
+
+.about-container p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #fff;
+}
+
+/* Tech list */
+.tech-list {
+  list-style: square inside;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  color: #fff;
+}
+
+/* Modules Cards */
+.modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 260px;
+  background: rgba(255, 255, 255, 0.1); /* transparent card */
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 2px solid rgba(168, 213, 186, 0.5);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  color: #fff;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  border-color: var(--earth-green);
+}
+
+.card h3 {
+  color: var(--light-green);
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.card ul li::before {
+  content: "🌱";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 280px;
+  background: rgba(92, 64, 51, 0.9);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  padding: 1.1rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 999;
+}
+
+/* Animations */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .modules {
+    flex-direction: column;
+  }
+  .about-container {
+    padding: 1.8rem;
+  }
+  .about-container h1 {
+    font-size: 2rem;
+  }
+}
