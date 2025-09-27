@@ -5,73 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Distributor Dashboard</title>
     <link rel="stylesheet" href="distributor.css" />
+    <!-- <link rel="stylesheet" href="login.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <!-- ================= Navbar ================= -->
     <header>
-      <div class="navbar">
-        <div class="logo">AgriConnect</div>
+      <nav class="navbar">
+        <div class="logo">🌱 Soil Farming Agent</div>
         <ul class="nav-link">
-          <li><a href="#welcome" class="active">Home</a></li>
-          <li><a href="#profile">Profile</a></li>
-          <li><a href="#crops">Crops</a></li>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Add details</a></li>
           <li><a href="index.html">Logout</a></li>
         </ul>
-      </div>
+      </nav>
     </header>
+    <!-- 🔹 Welcome Section -->
+    <div class="container1 welcome">
+      <h2>
+        Welcome, <span id="username">Raja</span>
+        <span class="wave">👋</span>
+      </h2>
+      <p class="welcome-subtitle">
+        Manage your distributors effortlessly and grow your farming network 🌾
+      </p>
 
-    <!-- ================= Welcome Section ================= -->
-    <section id="welcome" class="welcome">
-      <h2>Welcome, <span>Distributor</span> <span class="wave">👋</span></h2>
-      <p>Manage your crops efficiently through your dashboard.</p>
-    </section>
+      <!-- Call-to-Action Buttons -->
+      <div class="welcome-buttons">
+        <button onclick="showSection('add')" class="cta-btn">
+          Add Distributor
+        </button>
+        <button onclick="showSection('profile')" class="cta-btn secondary">
+          View Profile
+        </button>
+      </div>
+    </div>
 
-    <!-- ================= Distributor Profile ================= -->
-    <section id="profile" class="container">
-      <h2>My Profile</h2>
+    <!-- To show no. of same distributor details -->
+    <div class="container" id="add-distributor">
+      <h1 class="form-tittle">Add Distributor Detial</h1>
+      <form action="" method="post">
+        <!-- Name -->
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            id="Name"
+            placeholder="distributor-name"
+            required
+          />
+          <label for="distributor-name">Distributor Name</label>
+        </div>
+        <!-- Email -->
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            id="distributor-email"
+            placeholder="Email"
+            required
+            disabled
+          />
+          <label for="distributor-email">Distributor Email</label>
+        </div>
+        <!-- contact no. -->
+        <div class="input-group">
+          <i class="fa-solid fa-phone"></i>
+          <input
+            type="text"
+            id="distributor-contact"
+            placeholder="Contact No."
+            required
+          />
+          <label for="contact">Distributor Contact No.</label>
+        </div>
+        <!-- location -->
+        <div class="input-group">
+          <i class="fa-solid fa-location-dot"></i>
+          <input
+            type="text"
+            id="distributor-location"
+            placeholder="Location"
+            required
+          />
+          <label for="distributor-location">Distributor Location</label>
+        </div>
+        <!-- crops available -->
+        <div class="input-group">
+          <i class="fa-solid fa-wheat-awn"></i>
+          <input
+            type="text"
+            id="distributor-crops"
+            placeholder="Crops Available (comma-separated)"
+            required
+          />
+          <label for="distributor-crops">Distributor Crops</label>
+        </div>
+        <div class="btn-group">
+          <button type="submit" id="save-btn">Save</button>
+          <button type="reset" id="clear-btn">Clear</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ✅ Distributor Details Table -->
+    <section id="distributors" class="container">
+      <h3>Distributor Details</h3>
       <table>
-        <tbody>
+        <thead>
           <tr>
             <th>Name</th>
-            <td id="distName"></td>
-          </tr>
-          <tr>
-            <th>Contact</th>
-            <td id="distContact"></td>
-          </tr>
-          <tr>
+            <th>Email</th>
             <th>Location</th>
-            <td id="distLocation"></td>
+            <th>Contact</th>
+            <th>Crops Available</th>
+            <th>Actions</th>
+            <!-- ✅ Add an Actions column -->
           </tr>
+        </thead>
+        <tbody id="distributorTable">
+          <!-- Example row structure -->
+          <!--
+      <tr>
+        <td>Raja</td>
+        <td>raja@example.com</td>
+        <td>Chennai</td>
+        <td>9876543210</td>
+        <td>Rice, Wheat</td>
+        <td>
+          <button class="update-btn">Update</button>
+          <button class="delete-btn danger">Delete</button>
+        </td>
+      </tr>
+      -->
         </tbody>
       </table>
     </section>
 
-    <!-- ================= Assigned Crops ================= -->
-    <section id="crops" class="container">
-      <h2>Assigned Crops</h2>
-
-      <!-- Add Crop Button -->
-      <button id="addCropBtn" style="margin-bottom: 12px">Add New Crop</button>
-
-      <!-- Search/Filter -->
-      <input
-        type="text"
-        id="cropSearch"
-        placeholder="Search crops..."
-        style="margin-bottom: 12px; padding: 6px; width: 100%; max-width: 300px"
-      />
-
-      <!-- Crops Grid -->
-      <div class="card-grid" id="assignedCrops">
-        <!-- Crop cards injected via JS -->
-      </div>
-    </section>
-
-    <!-- ================= Footer ================= -->
-    <footer>&copy; 2025 AgriConnect | All Rights Reserved</footer>
-
-    <!-- ================= JS ================= -->
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 Soil Farming Agent | Distributor Dashboard</p>
+    </footer>
     <script type="module" src="distributor.js"></script>
   </body>
 </html>
