@@ -14,7 +14,7 @@
   --dark-text: #2b2b2b;
   --glass-bg: rgba(255, 255, 255, 0.1);
   --shadow: rgba(0, 0, 0, 0.25);
-  --header-height: 140px; /* height + spacing for fixed header */
+  --header-height: 140px;
 }
 
 /* ================= Background ================= */
@@ -46,20 +46,6 @@ header {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   z-index: 1000;
   overflow: hidden;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 2px;
-  background: linear-gradient(90deg, #a1887f, #6d4c41, #8d6e63);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
 }
 
 .navbar {
@@ -112,44 +98,33 @@ header::before {
 
 /* ================= Welcome Section ================= */
 .welcome {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-left: 6px solid #6b4226;
-  padding: 40px 30px;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 40px 50px;
+  background: linear-gradient(135deg, #a8d5ba, #3e7c47);
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   text-align: center;
-  border-radius: 18px;
-  box-shadow: 0px 8px 25px var(--shadow);
-  width: 100%;
-  max-width: 950px;
-  animation: fadeSlideUp 1s ease both;
   position: relative;
-  margin-top: calc(var(--header-height) / 2);
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.welcome::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  padding: 2px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
 }
 
 .welcome h2 {
   font-size: 2.4rem;
-  color: #2e7d32;
-  margin-bottom: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
 }
 
-.welcome h2 span {
+.welcome h2 span#welcome-name {
   color: #d35400;
   font-weight: bold;
 }
@@ -170,11 +145,37 @@ header::before {
   60%, 100% { transform: rotate(0deg); }
 }
 
-.welcome p {
+.welcome-subtitle {
   font-size: 1.1rem;
-  color: #444;
-  margin-top: 8px;
+  margin-top: 12px;
   font-style: italic;
+  opacity: 0.85;
+}
+
+.welcome-buttons {
+  margin-top: 20px;
+}
+
+.cta-btn {
+  padding: 10px 22px;
+  margin: 8px 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  color: #3e7c47;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+.cta-btn.secondary {
+  background-color: rgba(255,255,255,0.85);
+  color: #3e7c47;
 }
 
 .welcome::after {
@@ -192,36 +193,224 @@ header::before {
   to { transform: translateY(-10px); }
 }
 
-/* ================= Containers ================= */
+/* ================= Form & Container ================= */
 .container {
-  background: #fff;
-  padding: 22px;
-  margin: 14px auto;
-  border-radius: 14px;
-  box-shadow: 0px 6px 16px var(--shadow);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-left: 6px solid #6b4226;
+  padding: 40px 30px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0px 8px 25px var(--shadow);
   width: 100%;
-  max-width: 900px;
+  max-width: 950px;
   animation: fadeSlideUp 1s ease both;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   margin-top: calc(var(--header-height) / 2);
 }
 
-.container:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0px 10px 22px rgba(0, 0, 0, 0.3);
-}
+/* (rest of your previous CSS for inputs, buttons, tables, footer etc. remains the same) */
 
-.container h2,
-.container h3 {
-  margin-bottom: 12px;
-  color: #2c3e50;
+.form-tittle {
+  font-size: 1.8rem;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  margin-bottom: 1rem;
+  color: var(--soil-brown);
 }
 
-/* ================= Tables ================= */
+/* Message Box */
+.messageDiv {
+  background: #ffe5e5;
+  border-left: 4px solid #d9534f;
+  color: #b52b27;
+  padding: 8px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Input groups */
+.input-group {
+  position: relative;
+  margin: 25px 0;
+}
+
+.input-group i {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  color: #7b4f31;
+  font-size: 18px;
+}
+
+/* Text inputs & Select */
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 12px 12px 35px;
+  border: 2px solid #c69c6d;
+  border-radius: 8px;
+  outline: none;
+  background: #fef6eb;
+  transition: 0.3s;
+}
+
+/* Input focus */
+.input-group input:focus {
+  border-color: #5a3e2b;
+}
+
+/* Hide placeholder text for floating label effect */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: transparent;
+}
+
+/* Floating labels */
+.input-group label {
+  position: absolute;
+  left: 35px;
+  top: 12px;
+  border-radius: 2rem;
+  pointer-events: none;
+  color: #7b4f31;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 30px;
+  font-size: 12px;
+  color: #5a3e2b;
+  background: #f4f1e6;
+  padding: 0 5px;
+}
+
+/* ===================== Role Dropdown Enhancements ===================== */
+.input-group select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Custom arrow */
+  background-image: url("https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.input-group select:focus {
+  border-color: #5a3e2b;
+  box-shadow: 0 0 6px rgba(92, 64, 51, 0.4);
+}
+
+/* Float label when role chosen or focused */
+.input-group select:focus + label,
+.input-group select:valid + label {
+  top: -10px;
+  left: 30px;
+  font-size: 12px;
+  color: #5a3e2b;
+  background: #f4f1e6;
+  padding: 0 5px;
+}
+
+/* Style dropdown popup options */
+.input-group select option {
+  background: rgba(245, 240, 230, 0.95);
+  color: var(--soil-brown);
+  padding: 12px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+}
+
+.input-group select option:hover,
+.input-group select option:checked,
+.input-group select option:focus {
+  background: var(--light-green);
+  color: var(--dark-text);
+}
+
+/* Recover link */
+.recover {
+  text-align: right;
+  margin-top: -8px;
+  font-size: 0.85rem;
+}
+
+.recover a {
+  text-decoration: none;
+  color: var(--soil-brown);
+  transition: 0.3s;
+}
+
+.recover a:hover {
+  color: var(--earth-green);
+}
+/* Button Group Container */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* spacing between buttons */
+  margin-top: 1.5rem;
+}
+
+/* General Button Styling */
+.btn-group button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/* Save / Update Button */
+#save-btn {
+  background-color: #2e7d32; /* green */
+}
+#save-btn:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+}
+/* Clear button */
+#clear-btn {
+  background-color: #a1824c; /* cream */
+  color: #5c4033; /* soil-brown text */
+}
+#clear-btn:hover {
+  background-color: #e0d6c4; /* slightly darker on hover */
+  transform: translateY(-2px);
+}
+
+/* Delete Button */
+#delete-btn {
+  background-color: #c62828; /* red */
+}
+#delete-btn:hover {
+  background-color: #8e0000;
+  transform: translateY(-2px);
+}
+
+/* Back Button */
+#back-btn {
+  background-color: #757575; /* gray */
+}
+#back-btn:hover {
+  background-color: #424242;
+  transform: translateY(-2px);
+}
+
+/* Optional: Focus Effect */
+.btn-group button:focus {
+  outline: 2px solid #00000033;
+  outline-offset: 2px;
+}
+/* ================= Distributor Table ================= */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -251,92 +440,97 @@ table tr:nth-child(even) {
 table tr:hover {
   background: #eaf6ed;
 }
+/* ===============================
+   Table Styling
+=============================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-/* ================= Buttons ================= */
-button {
-  background-color: var(--earth-green);
+table th,
+table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background-color: var(--earth-green, #3e7c47);
   color: #fff;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #e6f0ea;
+}
+
+/* ===============================
+   Update & Delete Buttons
+=============================== */
+.update-btn,
+.delete-btn {
   padding: 6px 12px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 500;
+  font-size: 14px;
+  margin-right: 5px;
+  transition: all 0.2s ease;
 }
 
-button:hover {
-  background-color: var(--light-green);
-  color: #2b2b2b;
+/* Update Button */
+.update-btn {
+  background-color: #4caf50; /* green */
+  color: #fff;
 }
 
-/* ================= Crops Card Grid ================= */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+.update-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
-.card {
-  background: var(--cream);
-  padding: 18px;
-  border-radius: 12px;
-  border-left: 6px solid var(--earth-green);
-  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.18);
-  transition: transform 0.25s, box-shadow 0.25s;
+/* Delete Button */
+.delete-btn {
+  background-color: #f44336; /* red */
+  color: #fff;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+.delete-btn:hover {
+  background-color: #da190b;
+  transform: scale(1.05);
 }
 
-.card h4 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: var(--soil-brown);
+/* Optional: small icon spacing */
+.update-btn i,
+.delete-btn i {
+  margin-right: 4px;
 }
 
-.card p {
-  font-size: 0.95rem;
-  color: var(--dark-text);
-  margin: 4px 0;
-}
-
-/* ================= Scroll Adjustment ================= */
-section {
-  scroll-margin-top: var(--header-height);
-}
-
-/* ================= Animations ================= */
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ================= Footer ================= */
+/* Floating Glass Footer */
 footer {
   position: fixed;
   right: 20px;
   bottom: 20px;
   width: 280px;
-  background: rgba(92, 64, 51, 0.82);
+  background: rgba(92, 64, 51, 0.85);
   backdrop-filter: blur(12px);
   text-align: center;
   padding: 1.2rem;
   border-radius: 14px;
-  box-shadow: 0 6px 18px var(--shadow);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
   color: #fff;
   font-size: 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   z-index: 999;
 }
 
+/* Footer Glow */
 footer::before {
   content: "";
   position: absolute;
@@ -349,7 +543,6 @@ footer::before {
   mask-composite: exclude;
   pointer-events: none;
 }
-
 /* ================= Responsive ================= */
 @media (max-width: 768px) {
   header {
@@ -365,12 +558,5 @@ footer::before {
     width: 90%;
     right: 50%;
     transform: translateX(50%);
-  }
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-  input[type="text"] {
-    width: 100%;
-    max-width: 100%;
   }
 }
